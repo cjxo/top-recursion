@@ -22,25 +22,18 @@ function fibs(n) {
 
 function fibsRecInner(n, array) {
 	if (n < 2) {
-		return n;
-	} else if (array[n] != null) {
-		return array[n];
-	} else {
-		let fibval = fibsRecInner(n - 1, array) + fibsRecInner(n - 2, array);
-		array[n] = fibval;
-
-		return fibval;
+		array[n] = n;
+	} else if (array[n] === null) {
+		array[n] = fibsRecInner(n - 1, array) + fibsRecInner(n - 2, array);
 	}
+
+	return array[n];
 }
 
 function fibsRec(n) {
 	let result = new Array(n);
 	result.fill(null);
-	result[0] = 0;
-	result[1] = 1;
-	if (n > 2) {
-		fibsRecInner(n - 1, result);
-	}
+	fibsRecInner(n - 1, result);
 	return result;
 }
 
