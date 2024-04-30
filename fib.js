@@ -33,9 +33,16 @@ function fibsRecInner(n, array) {
 function fibsRec(n) {
 	let result = new Array(n);
 	result.fill(null);
-	fibsRecInner(n - 1, result);
+
+	if (n === 2) {
+		// hack :)
+		result[0] = 0;
+		result[1] = 1;
+	} else if (n > 0) {
+		fibsRecInner(n - 1, result);
+	}
 	return result;
 }
 
 console.log(fibs(8))
-console.log(fibsRec(8))
+console.log(fibsRec(0))
